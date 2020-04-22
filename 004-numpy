@@ -1,0 +1,770 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Cortez_Ethridge_ASSIGN4.ipynb",
+      "provenance": [],
+      "collapsed_sections": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Bayaniblues/Lambda-pre-assignments/blob/master/004-numpy\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ZvNsvUNNlZbi",
+        "colab_type": "text"
+      },
+      "source": [
+        "---\n",
+        "# Lambda School Data Science - Intro to Python  \n",
+        "---\n",
+        "# Assignment 04 - Intro to `numpy`\n",
+        "---\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "y8HUQb0OOztX",
+        "colab_type": "text"
+      },
+      "source": [
+        "##STOP! BEFORE GOING ANY FURTHER...  \n",
+        "\n",
+        "\n",
+        "1. Click \"File\" at the top.\n",
+        "2. Then, \"Save a Copy in Drive.\"\n",
+        "3. Change the file name to \"FIRSTNAME_LASTNAME_assign4\"  \n",
+        "\n",
+        "Now you have a copy of this notebook in your Drive account. This is the copy you'll edit and submit. Be sure to do this for ***every*** assignment!\n",
+        "\n",
+        "---\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "xMq6Of2Gt24o",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Part 1: Working with `numpy`\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "76eJSGb5gwtY",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.1 Importing `numpy`\n",
+        "\n",
+        "We've already used the `numpy` package by importing it and assigning it the standard alias of `np`. Do this again in the following cell - the more you practice typing these lines of code, the easier it will be to remember."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "h3r0IvHVuGJb",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Import numpy and assign it the standard alias\n",
+        "import numpy as np\n",
+        "import random"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "sICrSCYjIGbw",
+        "colab_type": "code",
+        "outputId": "6b3e5282-3a6e-4de4-ae61-2b327c8b47b5",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 54
+        }
+      },
+      "source": [
+        "xarray = np.array([2, 5, 7, 8])\n",
+        "for x in range(0,2):\n",
+        "  smallest = np.amin(xarray, axis=0) # identifies smallest value from array\n",
+        "  xarray = np.delete(xarray, np.where(xarray == smallest))\n",
+        "  print(xarray)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[5 7 8]\n",
+            "[7 8]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "DvYie7qokbDH",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.2 Generate random numbers\n",
+        "\n",
+        "Create a `(5,3)` `numpy` array of random integer values between 0 and 100.\n",
+        "\n",
+        "Use the the `random()` method in numpy to generate these integers. Name your new variable `myarray`. You should also print the array to check it's dimensions and values."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "UNJo_50VktRs",
+        "colab_type": "code",
+        "outputId": "b16d26ac-5645-4cf8-bde4-570a580955c7",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 110
+        }
+      },
+      "source": [
+        "# Generate your random numbers\n",
+        "myarray = np.random.randint(100, size=(5, 3))\n",
+        "\n",
+        "\n",
+        "# myarray = random.randrange(1, 100, 2))\n",
+        "print(myarray)\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[[81 46 38]\n",
+            " [46 18  5]\n",
+            " [59 39  7]\n",
+            " [59 17 79]\n",
+            " [ 8 68  2]]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "CYy4Zp5pk7tS",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.3 Array practice\n",
+        "\n",
+        "Time for some more practice. Run each of these tasks in the separate code cell listed below:\n",
+        "\n",
+        "1.  Return the first row\n",
+        "2.  Return the last column\n",
+        "3.  Return the third column values from the 4th and 5th rows\n",
+        "4.  Multiply every value in the array by 2\n",
+        "5.  Divide every value by 3\n",
+        "6.  Increase the values in the first row by 12\n",
+        "7. Calculate the mean of the first column\n",
+        "8. Calculate the median of the array _after_ removing the 2 smallest values in the array\n",
+        "9. Calculate the standard deviation of the first 3 rows\n",
+        "10. Return values greater than 25 in the second column\n",
+        "11. Return values less than 40 in the array"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "lIxLoTfGl910",
+        "colab_type": "code",
+        "outputId": "398775a2-4947-4493-f319-3c1eb90a1342",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        }
+      },
+      "source": [
+        "# 1. Return the first row:\n",
+        "myarray[0,:]"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([31, 97, 50])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 12
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "lMafok6zoGB-",
+        "colab_type": "code",
+        "outputId": "c235ad71-f28b-44e2-a6c0-73d1094743a8",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        }
+      },
+      "source": [
+        "# 2. Return the last column\n",
+        "myarray[:,-1]"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([50, 86, 36, 63, 52])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 16
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "TEpRarEbobjz",
+        "colab_type": "code",
+        "outputId": "38e06a86-8831-4d72-bf19-07115736d524",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        }
+      },
+      "source": [
+        "# 3. Return the third column values from the 4th and 5th rows\n",
+        "# [colum : row, range]\n",
+        "myarray[3:5,2]"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([88, 13])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 44
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "6nR51YtPpdKo",
+        "colab_type": "code",
+        "outputId": "d794e3d3-0bf3-4666-b214-68fa5cb8d080",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 110
+        }
+      },
+      "source": [
+        "# 4. Multiply every value in the array by 2\n",
+        "np.dot(myarray, 2)\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[162,  92,  76],\n",
+              "       [ 92,  36,  10],\n",
+              "       [118,  78,  14],\n",
+              "       [118,  34, 158],\n",
+              "       [ 16, 136,   4]])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 54
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "6Nr8BqCVpfr1",
+        "colab_type": "code",
+        "outputId": "e24ea4b2-e013-4e58-9172-141ce0bef236",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 110
+        }
+      },
+      "source": [
+        "# 5. Divide every value by 3\n",
+        "np.divide(myarray, 3)\n",
+        "\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[27.        , 15.33333333, 12.66666667],\n",
+              "       [15.33333333,  6.        ,  1.66666667],\n",
+              "       [19.66666667, 13.        ,  2.33333333],\n",
+              "       [19.66666667,  5.66666667, 26.33333333],\n",
+              "       [ 2.66666667, 22.66666667,  0.66666667]])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 57
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "5ejUOn2gptcV",
+        "colab_type": "code",
+        "outputId": "2e080e95-2b6d-436b-f23b-ae66509ddaf7",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        }
+      },
+      "source": [
+        "# 6. Increase the values in the first row by 12\n",
+        "myarray[0,:] + 12\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([93, 58, 50])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 65
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "o-q-n6rzpunI",
+        "colab_type": "code",
+        "outputId": "56176cef-88b3-4c09-aba8-a40e438d9bc8",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        }
+      },
+      "source": [
+        "# 7. Calculate the mean of the first column\n",
+        "np.mean(myarray[0,:])\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "55.0"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 66
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "izVdnwnLpuuY",
+        "colab_type": "code",
+        "outputId": "8e1e878d-888e-4f2d-be5f-98ab9e8e3aab",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 166
+        }
+      },
+      "source": [
+        "# 8. Calculate the median of the array after removing the 2 smallest values in the array\n",
+        "print(myarray)\n",
+        "# flatten and sort (axis=None does the flattening)\n",
+        "myarray = np.sort(myarray, axis=None)\n",
+        "print(myarray)\n",
+        "# remove two smallest values\n",
+        "myarray = myarray[2:]\n",
+        "print(myarray)\n",
+        "# calculate the median\n",
+        "np.median(myarray)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[81]\n",
+            "[81]\n",
+            "[]\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/local/lib/python3.6/dist-packages/numpy/core/fromnumeric.py:3335: RuntimeWarning: Mean of empty slice.\n",
+            "  out=out, **kwargs)\n",
+            "/usr/local/lib/python3.6/dist-packages/numpy/core/_methods.py:161: RuntimeWarning: invalid value encountered in double_scalars\n",
+            "  ret = ret.dtype.type(ret / rcount)\n"
+          ],
+          "name": "stderr"
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "nan"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 76
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "1WCDKp2xrzK9",
+        "colab_type": "code",
+        "outputId": "ef5d49c6-3982-4bba-d7be-2310528d7d7a",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 129
+        }
+      },
+      "source": [
+        "# 9. Calculate the standard deviation of the first 3 rows\n",
+        "# Generate a new array to work on\n",
+        "myarray = np.random.randint(100, size=(5, 3))\n",
+        "\n",
+        "print(myarray)\n",
+        "print(np.std(myarray))"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[[26  9 21]\n",
+            " [40 11 10]\n",
+            " [57 88 94]\n",
+            " [ 9 85 79]\n",
+            " [68 80 25]]\n",
+            "31.822842948632562\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "zb7aXd3xry3r",
+        "colab_type": "code",
+        "outputId": "c1c460d9-94cb-4136-dd8a-735ff6c0c3ba",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 110
+        }
+      },
+      "source": [
+        "# 10. Return values in the second column greater than 25\n",
+        "# create a Boolean mask where values in the 2nd column > 25 are True\n",
+        "\n",
+        "for x in myarray[:,1]:\n",
+        "  if (x > 25):\n",
+        "    print(\"True\")\n",
+        "  else:\n",
+        "    print('False')\n",
+        "\n",
+        "# Apply the mask\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "False\n",
+            "False\n",
+            "True\n",
+            "True\n",
+            "True\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "colab_type": "code",
+        "id": "IZ8HYk95ocDE",
+        "outputId": "673ea858-21af-4fa5-9842-b34e8fa510c6",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 110
+        }
+      },
+      "source": [
+        "# 11. Return values < 40 in the array\n",
+        "# create another Boolean mask for values < 40\n",
+        "np.less(myarray, [40])\n",
+        "\n",
+        "# apply the mask\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[ True,  True,  True],\n",
+              "       [False,  True,  True],\n",
+              "       [False, False, False],\n",
+              "       [ True, False, False],\n",
+              "       [False, False,  True]])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 114
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "6Xwf9ZDLX_xp",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 1.3: Run the following cell to view the solution for each of the above tasks.\n",
+        "\n",
+        "A new array will be generated to demonstrate the solution - the values will not be the same as your array. But the code for each task will still apply."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "15P0nIbqY8vi",
+        "colab_type": "code",
+        "outputId": "3bf5d047-415f-4dfa-ee45-e8dece9df903",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 1000
+        }
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 1.3\n",
+        "\n",
+        "# SOLUTION: Make sure you have completed all of the above tasks\n",
+        "# Generate your random numbers (NEW ARRAY)\n",
+        "myarray = np.random.randint(100, size=(5, 3))\n",
+        "print('The generated array: \\n', myarray)\n",
+        "print('\\n')\n",
+        "\n",
+        "# 1. Return the first row:\n",
+        "print('1. The first row: ', myarray[0])\n",
+        "print('\\n')\n",
+        "\n",
+        "# 2. Return the last column\n",
+        "print('2. The last column: ', myarray[:,-1])\n",
+        "print('\\n')\n",
+        "\n",
+        "# 3. Return the third column values from the 4th and 5th rows\n",
+        "print('3. The 3rd column, 4th & 5th rows: ', myarray[3:5,2])\n",
+        "print('\\n')\n",
+        "\n",
+        "# 4. Multiply every value in the array by 2\n",
+        "# (operates on the original array)\n",
+        "print('4. Multiply by 2: \\n', myarray * 2)\n",
+        "print('\\n')\n",
+        "\n",
+        "# 5. Divide every value by 3\n",
+        "# (operates on the original array)\n",
+        "print('5. Divide by 3: \\n', myarray / 3)\n",
+        "print('\\n')\n",
+        "\n",
+        "# 6. Increase the values in the first row by 12\n",
+        "# (operates on the original array)\n",
+        "print('6. Add 12 to the first row: \\n', myarray[0,:] + 12)\n",
+        "print('\\n')\n",
+        "\n",
+        "# 7. Calculate the mean of the first column\n",
+        "print('7. The mean of the 1st column: ', myarray[:,0].mean())\n",
+        "print('\\n')\n",
+        "\n",
+        "# 8. Calculate the median of the array after removing the 2 smallest values in the array\n",
+        "# flatten and sort (axis=None does the flattening)\n",
+        "myarray = np.sort(myarray, axis=None)\n",
+        "# remove two smallest values\n",
+        "myarray = myarray[2:]\n",
+        "# calculate the median\n",
+        "print('8. The median after removing the 2 smallest values: ', np.median(myarray))\n",
+        "print('\\n')\n",
+        "\n",
+        "# 9. Calculate the standard deviation of the first 3 rows\n",
+        "# Generate new array first:\n",
+        "myarray = np.random.randint(100, size=(5, 3))\n",
+        "# Then calculate the std:\n",
+        "print('9. The standard deviation is: ', np.std(myarray[0:3,:]))\n",
+        "print('\\n')\n",
+        "\n",
+        "# 10. Return values in the second column greater than 25\n",
+        "# create a Boolean mask where values in the 2nd column > 25 are True\n",
+        "condition = myarray[:,1] > 25\n",
+        "# Apply the mask\n",
+        "print('10. All values in 2nd column > 25: \\n', myarray[condition])\n",
+        "print('\\n')\n",
+        "\n",
+        "# 11. Return values < 40 in the array\n",
+        "# create another Boolean mask for values < 40\n",
+        "condition = myarray < 40\n",
+        "# apply the mask\n",
+        "print('11. All values < 40: \\n', myarray[condition])"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "The generated array: \n",
+            " [[40 85 49]\n",
+            " [66 27 61]\n",
+            " [53 61 30]\n",
+            " [72 94 69]\n",
+            " [11 42 11]]\n",
+            "\n",
+            "\n",
+            "1. The first row:  [40 85 49]\n",
+            "\n",
+            "\n",
+            "2. The last column:  [49 61 30 69 11]\n",
+            "\n",
+            "\n",
+            "3. The 3rd column, 4th & 5th rows:  [69 11]\n",
+            "\n",
+            "\n",
+            "4. Multiply by 2: \n",
+            " [[ 80 170  98]\n",
+            " [132  54 122]\n",
+            " [106 122  60]\n",
+            " [144 188 138]\n",
+            " [ 22  84  22]]\n",
+            "\n",
+            "\n",
+            "5. Divide by 3: \n",
+            " [[13.33333333 28.33333333 16.33333333]\n",
+            " [22.          9.         20.33333333]\n",
+            " [17.66666667 20.33333333 10.        ]\n",
+            " [24.         31.33333333 23.        ]\n",
+            " [ 3.66666667 14.          3.66666667]]\n",
+            "\n",
+            "\n",
+            "6. Add 12 to the first row: \n",
+            " [52 97 61]\n",
+            "\n",
+            "\n",
+            "7. The mean of the 1st column:  48.4\n",
+            "\n",
+            "\n",
+            "8. The median after removing the 2 smallest values:  61.0\n",
+            "\n",
+            "\n",
+            "9. The standard deviation is:  28.582995894779604\n",
+            "\n",
+            "\n",
+            "10. All values in 2nd column > 25: \n",
+            " [[17 31 65]\n",
+            " [44 69 81]]\n",
+            "\n",
+            "\n",
+            "11. All values < 40: \n",
+            " [17 31 21  3 19 14  5  9]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Pbhvz9UdH28p",
+        "colab_type": "text"
+      },
+      "source": [
+        "---\n",
+        "### Submit your assignment notebook! (Make sure you've changed the name to FIRSTNAME_LASTNAME_assign4): \n",
+        "\n",
+        "1.  Click the Share button in the upper-right hand corner of the notebook.\n",
+        "2.  Get the shareable link.\n",
+        "3.  Set condition to: \"Anyone with the link can comment.\"\n",
+        "\n",
+        "---"
+      ]
+    }
+  ]
+}
