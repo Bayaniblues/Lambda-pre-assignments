@@ -1,0 +1,1044 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Cortez_Ethridge_assign2",
+      "provenance": [],
+      "collapsed_sections": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Bayaniblues/Lambda-pre-assignments/blob/master/002-pythonlists\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ZvNsvUNNlZbi",
+        "colab_type": "text"
+      },
+      "source": [
+        "---\n",
+        "# Lambda School Data Science - Intro to Python  \n",
+        "---\n",
+        "# Assignment 02 - Python Lists & Loops\n",
+        "---\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "y8HUQb0OOztX",
+        "colab_type": "text"
+      },
+      "source": [
+        "##STOP! BEFORE GOING ANY FURTHER...  \n",
+        "\n",
+        "\n",
+        "1. Click \"File\" at the top.\n",
+        "2. Then, \"Save a Copy in Drive.\"\n",
+        "3. Change the file name to \"FIRSTNAME_LASTNAME_assign2\"  \n",
+        "\n",
+        "Now you have a copy of this notebook in your Drive account. This is the copy you'll edit and submit. Be sure to do this for ***every*** assignment!\n",
+        "\n",
+        "---\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "o57NvhYkBjKH",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Part 1: Lists\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "4haXpvn1QXW_",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Use the provided lists to answer the questions and prompts.\n",
+        "Make sure to run the cell below so the lists are declared with their corresponding values.\n",
+        "\n",
+        "These lists are one-dimensional where each element contains one value. The data types of these lists is checked by using the `type()` function. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "PweN-CTws2EV",
+        "colab_type": "code",
+        "outputId": "fad1bb50-f62f-4096-8b4c-be0ac49aa77c",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        }
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "\n",
+        "# EXAMPLE data (you don't need to do anything other than run this cell)\n",
+        "# Lists of personal data\n",
+        "heights = [184, 177, 190, 188, 159, 166]\n",
+        "weights = [84.5, 81.8, 86.1, 92.2, 69.6, 72.0 ]\n",
+        "names = ['John', 'Ryan', 'Bobby', 'Pete', 'Esther', 'Jane']\n",
+        "\n",
+        "# Checking the data type \n",
+        "print(type(heights), type(weights), type(names))"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "<class 'list'> <class 'list'> <class 'list'>\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "E2h_8e7k5tp-",
+        "colab_type": "text"
+      },
+      "source": [
+        "All three variables are a `list`. We'll practice accessing the different elements in each list. Remember that this is called indexing; we access an item in the list by calling it's index. And don't forget that Python is zero-indexed (for example, the second element would have an index of [1]).\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "85Asxvuf9nOz",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.1 Using the example lists from above, print out the third element from each list.\n",
+        "\n",
+        "The three lists are `names`, `heights`, and `weights`."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "WuMVtD649fmW",
+        "colab_type": "code",
+        "outputId": "6daa9a91-5bbc-4472-aa14-624231b771b7",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 68
+        }
+      },
+      "source": [
+        "print_this = [heights, weights, names]\n",
+        "for x in print_this:\n",
+        "  print(x[2])"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "190\n",
+            "86.1\n",
+            "Bobby\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "l9XY4BXV9wt-",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 1.1: Run the cell below to see the answer."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Ti95Ue5t960y",
+        "colab_type": "code",
+        "outputId": "aec20d5d-ad43-4449-bb19-ccbebea0f950",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        }
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 1.1\n",
+        "print('The third element of each list is:', heights[2], weights[2], names[2])"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "The third element of each list is: 190 86.1 Bobby\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "hC6x5WJaMRGx",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.2 Create a new empty list named 'bmi'.\n",
+        "\n",
+        "Lists can be created so there is a place to store variables generated later. After you create the list, print it out to see that it's empty."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "blYjgR9iMdWF",
+        "colab_type": "code",
+        "outputId": "8c7212d7-51f6-407d-ad11-de4902c037d1",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        }
+      },
+      "source": [
+        "bmi = []\n",
+        "print(bmi)\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "eUueNewe--wW",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 1.2: Run the cell below to verify your answer."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "_kyjHm1q_Ffo",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 1.2\n",
+        "\n",
+        "# Verify the list was created\n",
+        "assert isinstance(bmi, list), \"You haven't created a list named bmi\""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QSk1zFf4Qbzk",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.3 Combine the three lists into a new list where each element is a person's name, weight, and height. Call it \"person_data\". \n",
+        "\n",
+        "This is a more challenging task! Instead of the one-dimensional lists we have above, we're going to create the *nested list* that was demonstrated in the video lecture. There is more than one way to create this type of list; try using something like `[[nested list1], [nested list2]]` where the outside brackets indicate the list that holds the nested lists (inside brackets)."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "vhTJdq0_GIUw",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "heights = [184, 177, 190, 188, 159, 166]\n",
+        "weights = [84.5, 81.8, 86.1, 92.2, 69.6, 72.0 ]\n",
+        "names = ['John', 'Ryan', 'Bobby', 'Pete', 'Esther', 'Jane']\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "kzkzNOgQ4Thf",
+        "colab_type": "code",
+        "outputId": "514bbe27-0204-4cbd-9559-086cf3abddcb",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        }
+      },
+      "source": [
+        "# I wished the instructions were more verbose when communicated on how I should \n",
+        "# model the data to match the assertions \n",
+        " static_data = [\n",
+        "               [names[0], weights[0], heights[0]],\n",
+        "               [names[1], weights[1], heights[1]],\n",
+        "               [names[2], weights[2], heights[2]],\n",
+        "               [names[3], weights[3], heights[3]],\n",
+        "               [names[4], weights[4], heights[4]]\n",
+        "               ]\n",
+        "\n",
+        "person_data = []\n",
+        "for x in range(0,5): \n",
+        "  person_data.append([names[x], weights[x], heights[x]])\n",
+        "\n",
+        "print(person_data)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[['John', 84.5, 184], ['Ryan', 81.8, 177], ['Bobby', 86.1, 190], ['Pete', 92.2, 188], ['Esther', 69.6, 159]]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Cgsz01-DKYqI",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "#person_data = []\n",
+        "#for i, val in enumerate(names):\n",
+        "#  elements = [names[i], weights[i], heights[i]]\n",
+        "#  person_data.append(elements)\n",
+        "#print(person_data)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "MnN3-bFyiwCT",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 1.3 Run the cell below to check your answer."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "O8oymZ_UkPS6",
+        "colab_type": "code",
+        "outputId": "f21a8c2e-2071-4c8b-dbfb-cfd1d51734de",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        }
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 1.3\n",
+        "\n",
+        "# Check the dimensions of your list\n",
+        "assert len(person_data) == 5, \"Your list doesn't contain enough items.\"\n",
+        "assert len(person_data[0]) == 3, \"Your nested lists are not correct.\"\n",
+        "\n",
+        "print(\"Your list is correct.\")"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Your list is correct.\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "y_dSEp2ZNS20",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.4 Retrieve the last element of person_data and set it equal to the variable `last`. You can print out your answer to check it."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "h6DN1X3KNTHo",
+        "colab_type": "code",
+        "outputId": "f4841a99-0852-4a39-ca01-548080e7e61f",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        }
+      },
+      "source": [
+        "last = person_data[-1]\n",
+        "print(last)\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "['Esther', 69.6, 159]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "CampigxDUefV",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 1.4: Run the cell below to check your answer."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "gtt2NxsqUjlL",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 1.4\n",
+        "\n",
+        "# Check that the last element was assigned to last\n",
+        "assert last, \"Your variable hasn't been created.\"\n",
+        "assert last == person_data[-1], \"You didn't select the correct index.\""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "_L1Cbf6lNd5s",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.5 Retrieve the 2nd and 3rd elements from person_data. \n",
+        "\n",
+        "Assign these values to a variable called `second_third`."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ZFxi1aWPNcse",
+        "colab_type": "code",
+        "outputId": "c1a50df6-ac78-44be-d56b-30d131184038",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        }
+      },
+      "source": [
+        "second_third = person_data[1:3]\n",
+        "print(second_third)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[['Ryan', 81.8, 177], ['Bobby', 86.1, 190]]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "Yp3vlutnWcDK",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 1.5: Run the cell below to check your answer."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ifgVCun1WpgQ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 1.5\n",
+        "\n",
+        "# Verify the correct elements were selected\n",
+        "assert second_third, \"Your variable hasn't been created\"\n",
+        "assert second_third == person_data[1:3], \"You didn't select the correct indices\""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "MzTE8IADOKUR",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.6 Change the first element of person_data by increasing the weight to 84.9. Keep the other values unchanged.\n",
+        "\n",
+        "Remember to correctly select the indices; there will be two you need to specify."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "v-GL2nysOJLm",
+        "colab_type": "code",
+        "outputId": "2d772cec-d7ab-4ee2-be95-f0bb88bb2d08",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        }
+      },
+      "source": [
+        "person_data[0][1] = 84.9\n",
+        "print(person_data)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[['John', 84.9, 184], ['Ryan', 81.8, 177], ['Bobby', 86.1, 190], ['Pete', 92.2, 188], ['Esther', 69.6, 159]]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "YgA1x1jJYlEf",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 1.6: Run the cell below to check your answer."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "CnoIzFm3YraY",
+        "colab_type": "code",
+        "outputId": "06e98db0-98dc-4cb7-bffc-4c3d1fa1caa6",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        }
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 1.6\n",
+        "\n",
+        "# Verify the first element was changed\n",
+        "assert person_data[0][1] == 84.9\n",
+        "\n",
+        "print(\"Your answer is correct.\")"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Your answer is correct.\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "P1f4pyPjNlzm",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.7 Add another person, Samantha, to person_data. Her height is 162 cm and her weight is 51.3 kg. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "FCHkHuwRNc17",
+        "colab_type": "code",
+        "outputId": "58d97de9-0bba-42cd-bcf8-b3c5943711cb",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 36
+        }
+      },
+      "source": [
+        "person_data.append(['Samantha', 51.3, 162])\n",
+        "person_data.append(['Samantha', 51.3, 162])\n",
+        "\n",
+        "# Isn't python 0 indexed?\n",
+        "print(person_data[6])"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "['Samantha', 51.3, 162]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "eXyzPW-PSSzg",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 1.7: Run the cell below to check your answer."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "R-4yVN4bSXF1",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 1.7\n",
+        "\n",
+        "# Verify that Samantha's data was added correctly\n",
+        "assert person_data[6] == ['Samantha', 51.3, 162]"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "i4IUr9H9f93n",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.8 Next, we'll insert an item into the list. We'll add in a new set of  name, height, and weight variables. For an individual named \"Lambda Llama\" add in a height of 180 cm and a weight of 140 kg. Add this item after the third item (which has an index of two)."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "gz6q2PS8Q-Ye",
+        "colab_type": "code",
+        "outputId": "bb36fd80-6f1a-4ad5-cac6-075b0555a64d",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 56
+        }
+      },
+      "source": [
+        "person_data.insert(3, ['Lambda Llama', 140, 180])\n",
+        "print(person_data)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[['John', 84.9, 184], ['Ryan', 81.8, 177], ['Bobby', 86.1, 190], ['Lambda Llama', 140, 180], ['Pete', 92.2, 188], ['Esther', 69.6, 159], ['Samantha', 51.3, 162], ['Samantha', 51.3, 162]]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "dwzyLcG4S9Ff",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 1.8: Run the cell below to check your answer."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "deZgNGLkTCUv",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 1.8\n",
+        "\n",
+        "# Verify that Lambda Llama's data was added correctly\n",
+        "assert person_data[3] == ['Lambda Llama', 140, 180]\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "_pdhsa2YOxwj",
+        "colab_type": "text"
+      },
+      "source": [
+        "---\n",
+        "\n",
+        "## Part 2: Loops\n",
+        "\n",
+        "Write our what you think is for loop is, in your own words."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "jnGQ90YXtPKJ",
+        "colab_type": "text"
+      },
+      "source": [
+        "![alt text](https://)Your answer here:\n",
+        "  \n",
+        "\n",
+        "---\n",
+        "\n",
+        "A loop is a quick iteration over a sequence, in our example we were iterating over a list. A recursion can also be used for greater control when manipulating large datasets."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "XnxzXONfUJsC",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 2.1: Here is a good explanation of a Python [for loop](https://www.digitalocean.com/community/tutorials/how-to-construct-for-loops-in-python-3)."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "_XfTfGD7VLkr",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 2.2 Write a simple `for` loop to iterate over and print a number 10 times. \n",
+        "\n",
+        "You can use the `range` function with one or two arguments. Or you can explicitly write out a list of 10 values and then loop over it. \n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "GhEWpyNCVVV4",
+        "colab_type": "code",
+        "outputId": "7f6467c9-c936-4d21-a46f-68164f6215bb",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        }
+      },
+      "source": [
+        "for x in range(0, 10):\n",
+        "  print(\"10\")\n",
+        "\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "10\n",
+            "10\n",
+            "10\n",
+            "10\n",
+            "10\n",
+            "10\n",
+            "10\n",
+            "10\n",
+            "10\n",
+            "10\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ageHGDUWaDi8",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 2.3 Write a `for` loop to cube integers from 11 to 15, inclusive (i.e. including 11 and 15).\n",
+        "\n",
+        "You can include a `print` statement in your `for` loop to check your work. \n",
+        "\n",
+        "*Hint: The output should be:* `1331, 1728, 2197, 2774, 3375`"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "jCZJ9gmrbHx5",
+        "colab_type": "code",
+        "outputId": "5f4ddab5-fa75-447b-bc54-4cafc73a4dae",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 111
+        }
+      },
+      "source": [
+        "for x in range(11, 16):\n",
+        "  print(x ** 3)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "1331\n",
+            "1728\n",
+            "2197\n",
+            "2744\n",
+            "3375\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "TyYb9YBzbW6h",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 2.4 Now, let's combine the above for loop with creating a list of numbers. Use a list inside the `for` loop to hold the results; name your list `cubed`. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "A6cWHWwTgPuS",
+        "colab_type": "code",
+        "outputId": "c0d731af-f1a5-4fe0-837f-58c5f43b61fc",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 111
+        }
+      },
+      "source": [
+        "cubed = []\n",
+        "cube_me = lambda x : x ** 3\n",
+        "for x in range(11, 16):\n",
+        "  cubed.append(cube_me(x))\n",
+        "  print(cubed)"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "[1331]\n",
+            "[1331, 1728]\n",
+            "[1331, 1728, 2197]\n",
+            "[1331, 1728, 2197, 2744]\n",
+            "[1331, 1728, 2197, 2744, 3375]\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "M_ponmLZnFXC",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 2.4: Run the cell below to check your answer."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "06LPTFZancQP",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 2.4\n",
+        "\n",
+        "# Check that the list is equal to the cubes of: 11, 12, 13, 14, 15\n",
+        "assert len(cubed) == len(range(11,16)), \"Your list is not the correct length.\"\n",
+        "assert cubed == [1331, 1728, 2197, 2744, 3375], \"Your numbers are incorrect.\""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "73tWnAoaPHNf",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 2.5 Use a `for` loop to calculate the BMI of each person.\n",
+        "\n",
+        "Using the list you created above (`person_data`) to calculate the BMI for each individual.\n",
+        "\n",
+        "The formula is as follows:\n",
+        "\n",
+        ">$\\frac{Weight(kg)}{Height(m)^2} = BMI$\n",
+        "\n",
+        "Hint: You will interate over one index but two of the other indices will remain the same i.e. you'll always want the first (height) and second (weight) element of each nested list."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "jDNPq4I3Nc8J",
+        "colab_type": "code",
+        "outputId": "50a2c717-1a34-495e-a20d-f72ee7dc20f6",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 167
+        }
+      },
+      "source": [
+        "bmi_me = lambda w, h : round(w / (h ** 2) * 1000, 2)\n",
+        "\n",
+        "for i in range(0, len(person_data)):\n",
+        "  patient_name = person_data[i][0]\n",
+        "  patient_weight = person_data[i][2]\n",
+        "  patient_height = person_data[i][1]\n",
+        "  patient_bmi = bmi_me(patient_weight, patient_height )\n",
+        "\n",
+        "  print(f'The bmi for {patient_name} is {patient_bmi}')\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "The bmi for John is 25.53\n",
+            "The bmi for Ryan is 26.45\n",
+            "The bmi for Bobby is 25.63\n",
+            "The bmi for Lambda Llama is 9.18\n",
+            "The bmi for Pete is 22.12\n",
+            "The bmi for Esther is 32.82\n",
+            "The bmi for Samantha is 61.56\n",
+            "The bmi for Samantha is 61.56\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "rIRg70QvOxCu",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 2.6 STRETCH GOAL: Do it using list comprehension.\n",
+        "\n",
+        "For loops are one way to interate through a list or nested lists. But list comprehensions are more Pythonic way to accomplish the same thing."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "hLfuTidrPhiQ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "#  Calculate the BMI using a list comprehension\n",
+        "\n",
+        "# One way (suggestion)\n",
+        "\n",
+        "\n",
+        "# More Pythonic way (suggestion)\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "1EbT6vQ8BYyF",
+        "colab_type": "text"
+      },
+      "source": [
+        "---\n",
+        "\n",
+        "### Submit your assignment notebook! (Make sure you've changed the name to FIRSTNAME_LASTNAME_assign2): \n",
+        "\n",
+        "1.  Click the Share button in the upper-right hand corner of the notebook.\n",
+        "2.  Get shareable link\n",
+        "3.  Set condition to: \"Anyone with the link can comment\"\n",
+        "\n",
+        "---"
+      ]
+    }
+  ]
+}
