@@ -1,0 +1,869 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Cortez_Ethridge_ASSIGN5.ipynb",
+      "provenance": [],
+      "collapsed_sections": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Bayaniblues/Lambda-pre-assignments/blob/master/005-loadingdata\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ZvNsvUNNlZbi",
+        "colab_type": "text"
+      },
+      "source": [
+        "---\n",
+        "# Lambda School Data Science - Intro to Pandas\n",
+        "---\n",
+        "# Assignment 05 - Loading Data\n",
+        "---\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "y8HUQb0OOztX",
+        "colab_type": "text"
+      },
+      "source": [
+        "##STOP! BEFORE GOING ANY FURTHER...  \n",
+        "\n",
+        "\n",
+        "1. Click \"File\" at the top.\n",
+        "2. Then, \"Save a Copy in Drive.\"\n",
+        "3. Change the file name to \"FIRSTNAME_LASTNAME_assign5\"  \n",
+        "\n",
+        "Now you have a copy of this notebook in your Drive account. This is the copy you'll edit and submit. Be sure to do this for ***every*** assignment!\n",
+        "\n",
+        "---"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "xMq6Of2Gt24o",
+        "colab_type": "text"
+      },
+      "source": [
+        "## Part 1: Working with `pandas` \n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "f94n9hMXH_iM",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.1 - Importing `pandas`\n",
+        "\n",
+        "Import the `pandas` library with the standard alias. Make sure you run this cell before the other cells that use the `pandas` library."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "h3r0IvHVuGJb",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "import pandas as pd\n"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "DvYie7qokbDH",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.2 - Import the data from a CSV file\n",
+        "\n",
+        "Today you'll be working with a Gross Domestic Product (GDP) data set. You can find the data [here](https://raw.githubusercontent.com/axrd/datasets/master/gdp.csv). The first line of this file is the column labels (sometimes with spelling errors, which should be changed as you continue the analysis): \n",
+        "\n",
+        "`,COUNRY,GDP (BILLIONS),CODE`\n",
+        "\n",
+        "We're going to be loading this data from a URL, as demonstrated in lecture. In the following cell, load the CSV file into a dataframe using `pandas`. [Here](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html) is the documentation. Call your dataframe `df_gdp`."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "UNJo_50VktRs",
+        "colab_type": "code",
+        "outputId": "1c3465a5-0d47-4a92-8abb-8cb5d4b9a7d4",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 214
+        }
+      },
+      "source": [
+        "# Import the GDP data hosted on Github\n",
+        "# columns: COUNRY,GDP (BILLIONS),CODE\n",
+        "df_gdp = pd.read_csv(\"https://raw.githubusercontent.com/axrd/datasets/master/gdp.csv\")\n",
+        "print(df_gdp.shape)\n",
+        "df_gdp.head()\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "(222, 4)\n"
+          ],
+          "name": "stdout"
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Unnamed: 0</th>\n",
+              "      <th>COUNRY</th>\n",
+              "      <th>GDP (BILLIONS)</th>\n",
+              "      <th>CODE</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>Afghanistan</td>\n",
+              "      <td>21.71</td>\n",
+              "      <td>AFG</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1</td>\n",
+              "      <td>Albania</td>\n",
+              "      <td>13.40</td>\n",
+              "      <td>ALB</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>2</td>\n",
+              "      <td>Algeria</td>\n",
+              "      <td>227.80</td>\n",
+              "      <td>DZA</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>3</td>\n",
+              "      <td>American Samoa</td>\n",
+              "      <td>0.75</td>\n",
+              "      <td>ASM</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>4</td>\n",
+              "      <td>Andorra</td>\n",
+              "      <td>4.80</td>\n",
+              "      <td>AND</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   Unnamed: 0          COUNRY  GDP (BILLIONS) CODE\n",
+              "0           0     Afghanistan           21.71  AFG\n",
+              "1           1         Albania           13.40  ALB\n",
+              "2           2         Algeria          227.80  DZA\n",
+              "3           3  American Samoa            0.75  ASM\n",
+              "4           4         Andorra            4.80  AND"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 6
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "M_Lslu3KJt9E",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 1.2 - Run the following cell to check your answer."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "5ZOpTCYTJy0m",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 1.2\n",
+        "\n",
+        "# Verify the dataframe was created with the correct name and isn't empty\n",
+        "assert not df_gdp.empty, \"Your dataframe doesn't contain any data.\""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "CYy4Zp5pk7tS",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.3 - Using the DataFrame you just loaded, print out the first seven rows.\n",
+        "\n",
+        "This will include the first row containing the column labels."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "lIxLoTfGl910",
+        "colab_type": "code",
+        "outputId": "6d7d628d-37af-46bf-d797-4cc81778dd0d",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 257
+        }
+      },
+      "source": [
+        "# Print out the first 7 rows\n",
+        "\n",
+        "df_gdp.head(7)\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Unnamed: 0</th>\n",
+              "      <th>COUNRY</th>\n",
+              "      <th>GDP (BILLIONS)</th>\n",
+              "      <th>CODE</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>Afghanistan</td>\n",
+              "      <td>21.71</td>\n",
+              "      <td>AFG</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1</td>\n",
+              "      <td>Albania</td>\n",
+              "      <td>13.40</td>\n",
+              "      <td>ALB</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>2</td>\n",
+              "      <td>Algeria</td>\n",
+              "      <td>227.80</td>\n",
+              "      <td>DZA</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>3</td>\n",
+              "      <td>American Samoa</td>\n",
+              "      <td>0.75</td>\n",
+              "      <td>ASM</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>4</td>\n",
+              "      <td>Andorra</td>\n",
+              "      <td>4.80</td>\n",
+              "      <td>AND</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>5</th>\n",
+              "      <td>5</td>\n",
+              "      <td>Angola</td>\n",
+              "      <td>131.40</td>\n",
+              "      <td>AGO</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>6</th>\n",
+              "      <td>6</td>\n",
+              "      <td>Anguilla</td>\n",
+              "      <td>0.18</td>\n",
+              "      <td>AIA</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   Unnamed: 0          COUNRY  GDP (BILLIONS) CODE\n",
+              "0           0     Afghanistan           21.71  AFG\n",
+              "1           1         Albania           13.40  ALB\n",
+              "2           2         Algeria          227.80  DZA\n",
+              "3           3  American Samoa            0.75  ASM\n",
+              "4           4         Andorra            4.80  AND\n",
+              "5           5          Angola          131.40  AGO\n",
+              "6           6        Anguilla            0.18  AIA"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 8
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "125CV0jpQ5vT",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.4 - And now print out the last three rows of the DataFrame.\n",
+        "\n",
+        "Since we're looking at the end of the DataFrame, the last three rows do not contain the row with the column labels."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "lMafok6zoGB-",
+        "colab_type": "code",
+        "outputId": "9a2d2f39-d60e-49f8-d50b-f6f4f133183e",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 405
+        }
+      },
+      "source": [
+        "# Print out the last 3 rows\n",
+        "df_gdp.head(-3)\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>Unnamed: 0</th>\n",
+              "      <th>COUNRY</th>\n",
+              "      <th>GDP (BILLIONS)</th>\n",
+              "      <th>CODE</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "      <td>Afghanistan</td>\n",
+              "      <td>21.71</td>\n",
+              "      <td>AFG</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1</td>\n",
+              "      <td>Albania</td>\n",
+              "      <td>13.40</td>\n",
+              "      <td>ALB</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>2</td>\n",
+              "      <td>Algeria</td>\n",
+              "      <td>227.80</td>\n",
+              "      <td>DZA</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>3</td>\n",
+              "      <td>American Samoa</td>\n",
+              "      <td>0.75</td>\n",
+              "      <td>ASM</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>4</td>\n",
+              "      <td>Andorra</td>\n",
+              "      <td>4.80</td>\n",
+              "      <td>AND</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>...</th>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>214</th>\n",
+              "      <td>214</td>\n",
+              "      <td>Vanuatu</td>\n",
+              "      <td>0.82</td>\n",
+              "      <td>VUT</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>215</th>\n",
+              "      <td>215</td>\n",
+              "      <td>Venezuela</td>\n",
+              "      <td>209.20</td>\n",
+              "      <td>VEN</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>216</th>\n",
+              "      <td>216</td>\n",
+              "      <td>Vietnam</td>\n",
+              "      <td>187.80</td>\n",
+              "      <td>VNM</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>217</th>\n",
+              "      <td>217</td>\n",
+              "      <td>Virgin Islands</td>\n",
+              "      <td>5.08</td>\n",
+              "      <td>VGB</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>218</th>\n",
+              "      <td>218</td>\n",
+              "      <td>West Bank</td>\n",
+              "      <td>6.64</td>\n",
+              "      <td>WBG</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "<p>219 rows × 4 columns</p>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "     Unnamed: 0          COUNRY  GDP (BILLIONS) CODE\n",
+              "0             0     Afghanistan           21.71  AFG\n",
+              "1             1         Albania           13.40  ALB\n",
+              "2             2         Algeria          227.80  DZA\n",
+              "3             3  American Samoa            0.75  ASM\n",
+              "4             4         Andorra            4.80  AND\n",
+              "..          ...             ...             ...  ...\n",
+              "214         214         Vanuatu            0.82  VUT\n",
+              "215         215       Venezuela          209.20  VEN\n",
+              "216         216         Vietnam          187.80  VNM\n",
+              "217         217  Virgin Islands            5.08  VGB\n",
+              "218         218       West Bank            6.64  WBG\n",
+              "\n",
+              "[219 rows x 4 columns]"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 9
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "CfUYIGiuQ-o0",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.5 - Shape of the DataFrame. \n",
+        "\n",
+        "The dimensions of a DataFrame are an important feature of the datasets you will be working with. Determine the shape of `df_gdp` and save your answer in a variable called `gdp_size`."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "hQGGcDNYQ-_b",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Determine the shape of df_gdp\n",
+        "\n",
+        "gdp_size = df_gdp.shape"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ZlHs_QYGkoih",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 1.5 - Run the following cell to check your answer."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "HVzS2blAkvK6",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 1.5\n",
+        "\n",
+        "# Check the shape df_gdp (it should be (222, 4))\n",
+        "assert gdp_size == df_gdp.shape"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "7ecnTkAIQ_MW",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.6 - DataFrame data types\n",
+        "\n",
+        "A big advantage of using pandas DataFrames to store and work with your data is that it's very easy to have data with different types in a single DataFrame. The previous library we used, `numpy`, was designed for storing numerical data.\n",
+        "\n",
+        "Your task is to determine the data type of each column (feature) in the DataFrame. Columns and features are interchangeable when talking about DataFrames or tabular data in general.\n",
+        "\n",
+        "*Hint: We didn't cover this in lecture so see what Google can tell you.*  \n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "_1U2esBGQ_XF",
+        "colab_type": "code",
+        "outputId": "f87fb81e-c066-4097-a38f-5de5d6e32c6a",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 102
+        }
+      },
+      "source": [
+        "# Display the data type of each column in df_gdp\n",
+        "\n",
+        "df_gdp.dtypes"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Unnamed: 0          int64\n",
+              "COUNRY             object\n",
+              "GDP (BILLIONS)    float64\n",
+              "CODE               object\n",
+              "dtype: object"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 13
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "p52saiQGbeMq",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.7 - Data Cleaning\n",
+        "Not all data is ready for immediate analysis; it often contains spelling errors, incorrectly named columns, missing values, and possibly a variety of other issues. \n",
+        "\n",
+        "In the next few examples, we'll do some basic data cleaning to make things easier for our future tasks. First, let's rename the column \"COUNRY\" to \"Country\". In a new cell, verify that the change persisted (or is permanent)."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "5cWuMltDbkCX",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# Rename the COUNRY column\n",
+        "\n",
+        "df_gdp.rename(columns={'COUNRY':'Country'}, inplace=True)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "6NOSNRuYboO1",
+        "colab_type": "code",
+        "outputId": "3c666525-4e7c-4d64-c311-55056a8c5df9",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 102
+        }
+      },
+      "source": [
+        "# Verify the change in column name persisted\n",
+        "\n",
+        "df_gdp.dtypes"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Unnamed: 0          int64\n",
+              "Country            object\n",
+              "GDP (BILLIONS)    float64\n",
+              "CODE               object\n",
+              "dtype: object"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 15
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "QpMgbylEPW7N",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 1.7 - Run the following cell to check your answer."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "iKHf5MgwPhkJ",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 1.7\n",
+        "\n",
+        "# Verify the column names\n",
+        "test_names = df_gdp.columns.values.tolist()\n",
+        "assert test_names == ['Unnamed: 0', 'Country', 'GDP (BILLIONS)', 'CODE']"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "D3B3Z8GvcY4Q",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Submit your assignment notebook! (Make sure you've changed the name to FIRSTNAME_LASTNAME_assign5): \n",
+        "\n",
+        "1.  Click the Share button in the upper-right hand corner of the notebook.\n",
+        "2.  Get the shareable link.\n",
+        "3.  Set condition to: \"Anyone with the link can comment.\"\n",
+        "\n",
+        "---"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "m69ItJKqb7bh",
+        "colab_type": "text"
+      },
+      "source": [
+        "### 1.8 - STRETCH: Tying it back to earlier lessons and getting some more practice.\n",
+        "\n",
+        "The question below is _optional_. Only tackle it after you've completed the rest of the assignment!\n",
+        "\n",
+        "Determine the following values using the GDP data:\n",
+        "\n",
+        "*  maximum GDP\n",
+        "*  minimum GDP\n",
+        "*  median GDP\n",
+        "*  standard deviation of GDP"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "bEKgWDfscMmd",
+        "colab_type": "code",
+        "outputId": "dc15399a-22d0-44de-8ed0-32d32d50a85c",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 85
+        }
+      },
+      "source": [
+        "# Complete your tasks in the following cell\n",
+        "# Find the max GDP, min GDP, median GDP, STD GDP\n",
+        "print(df_gdp['GDP (BILLIONS)'].max())\n",
+        "print(df_gdp['GDP (BILLIONS)'].min())\n",
+        "print(df_gdp['GDP (BILLIONS)'].median())\n",
+        "print(df_gdp['GDP (BILLIONS)'].std())\n"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "17420.0\n",
+            "0.01\n",
+            "21.525\n",
+            "1464.8555325721697\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "G9e5_qVpIXwc",
+        "colab_type": "text"
+      },
+      "source": [
+        "### Solution 1.8: Run the following cell to view the solution."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "yZp9rwi-8l4d",
+        "colab_type": "code",
+        "outputId": "84ca0128-6e04-44bd-94a0-52e182f25b31",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 85
+        }
+      },
+      "source": [
+        "# DO NOT EDIT THIS CELL\n",
+        "# SOLUTION 1.8\n",
+        "\n",
+        "# Solution to 1.8\n",
+        "print(df_gdp['GDP (BILLIONS)'].max())\n",
+        "print(df_gdp['GDP (BILLIONS)'].mean())\n",
+        "print(df_gdp['GDP (BILLIONS)'].median())\n",
+        "print(df_gdp['GDP (BILLIONS)'].std())"
+      ],
+      "execution_count": 0,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "17420.0\n",
+            "352.6371621621622\n",
+            "21.525\n",
+            "1464.8555325721697\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "bcBkUcdSEJxX",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
